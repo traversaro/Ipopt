@@ -46,6 +46,8 @@
 # endif
 #endif
 
+#include <cstring>
+
 namespace Ipopt
 {
 #if COIN_IPOPT_VERBOSITY > 0
@@ -62,6 +64,7 @@ namespace Ipopt
                    dbg_verbosity);
     //initialize mumps
     DMUMPS_STRUC_C* mumps_ = new DMUMPS_STRUC_C;
+    std::memset(mumps_, 0, sizeof(DMUMPS_STRUC_C));
 #ifndef MUMPS_MPI_H
 #if defined(HAVE_MPI_INITIALIZED)
     int mpi_initialized;
